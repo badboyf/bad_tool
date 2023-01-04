@@ -33,7 +33,7 @@ class FzkBaseCommand(object):
         self._settings = sublime.load_settings("bad_tool.sublime-settings")
 
     # 写入文件
-    def write_file(self, filename: filename, content: ''):
+    def write_file(self, filename: '', content: ''):
         try:
             # self.view.window().status_message('正在写入文件:'.format(filename))
             with open(filename, 'wb') as f:

@@ -27,17 +27,16 @@
   }
 ]
 // [
-
-// // {
-// //   "id": "tools",
-// //   "children": [
-// //     {
-// //       "id": "menu-run-js",
-// //       "caption": "Bad Tool - Run JS",
-// //       "command": "runjs"
-// //     }
-// // ]
-// // },
+//   {
+//      "id": "tools",
+//      "children": [
+//        {
+//          "id": "menu-run-js",
+//          "caption": "Bad Tool - Run JS",
+//          "command": "runjs"
+//        }
+//     ]
+//   },
 //   {
 //     // "mnemonic": "n",
 //     // "caption": "Preferences",

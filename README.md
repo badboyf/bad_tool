@@ -25,5 +25,5 @@ yyyy-MM-dd
 0000000000000
 ````
 
-## clearpanel
+## clear_panel
 快捷键: ctrl + L
