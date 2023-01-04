@@ -1,0 +1,14 @@
+[
+    {
+        "keys": ["super+e"], 
+        "command": "runjs"
+    },
+	{
+        "keys": ["ctrl+e"], 
+        "command": "timeformat"
+    },
+	{
+        "keys": ["ctrl+l"], 
+        "command": "clear_panel"
+    }
+]

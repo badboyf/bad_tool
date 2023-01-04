@@ -1,0 +1,71 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "caption": "Bad Tool",
+            "children": [
+              {
+                "args": {
+                  "base_file": "${packages}/bad_tool/bad_tool.sublime-settings",
+                  "default": "{\n\t$0\n}\n"
+                },
+                "caption": "Settings",
+                "command": "edit_settings"
+              },
+              {
+                "caption": "-"
+              }
+            ]
+          }
+        ],
+        "id": "package-settings"
+      }
+    ],
+    "id": "preferences"
+  }
+]
+// [
+
+// // {
+// //   "id": "tools",
+// //   "children": [
+// //     {
+// //       "id": "menu-run-js",
+// //       "caption": "Bad Tool - Run JS",
+// //       "command": "runjs"
+// //     }
+// // ]
+// // },
+//   {
+//     // "mnemonic": "n",
+//     // "caption": "Preferences",
+//     "id": "preferences",
+//     "children": [
+//       {
+//         // "mnemonic": "P",
+//         // "caption": "Package Settings",
+//         "id": "package-settings",
+//         "children": [
+//           {
+//             "caption": "Bad Tool",
+//             "children": [
+//               {
+//                 "args": {
+//                   "base_file": "${packages}/bad_tool/bad_tool.sublime-settings",
+//                   "default": "{\n\t$0\n}\n"
+//                 },
+//                 "caption": "Settings",
+//                 "command": "edit_settings"
+//               },
+//               {
+//                 "caption": "-"
+//               }
+//             ]
+//           }
+//         ]
+//       }
+//     ]
+//   }
+// ]

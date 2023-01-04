@@ -1,0 +1,14 @@
+[
+    {
+        "caption": "Bad Tool - Run JS",
+        "command": "runjs"
+    },
+    {
+        "caption": "Bad Tool - Time Format",
+        "command": "timeformat"
+    },
+    {
+        "caption": "Bad Tool - Clear Panel",
+        "command": "clear_panel"
+    }
+]

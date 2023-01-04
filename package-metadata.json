@@ -1,0 +1,10 @@
+{
+  "platforms": [
+    "*"
+  ],
+  "dependencies": [],
+  "sublime_text": ">=3000",
+  "url": "",
+  "version": "0.0.1",
+  "description": "聚合工具"
+}
