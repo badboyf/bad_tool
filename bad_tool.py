@@ -86,33 +86,36 @@ class timeformatCommand(FzkBaseCommand, sublime_plugin.TextCommand):
     def doRun(self, edit):
         regions = self.view.sel()
         for region in regions:
+            if region.empty():
+                self.panel_log('not support null\n')
+                continue
             # 获取选中区域
             region, is_entire = get_selection_from_region(region=region, regions_length=len(region), view=self.view)
             if region is None:
                 continue
             # 获取文本
             selection_text = self.view.substr(region)
-        try:
-            # 仅支持处理 2023-01-04 08:46:00  2023-01-04 1672793160937  1672793160
-            if len(selection_text) == 10 and '-' in selection_text:  # 2023-01-04
-                time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d'))) * 100
-                self.panel_log('{}          {}\n'.format(selection_text, time_int))
-            elif len(selection_text) == 19 and '-' in selection_text and ':' in selection_text: # 2023-01-04 08:46:00
-                time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d %H:%M:%S'))) * 100
-                self.panel_log('{} {}\n'.format(selection_text, time_int))
-            elif len(selection_text) == 10 and selection_text.isdigit(): # 1672793160
-                time_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(selection_text)))
-                self.panel_log('{}          {}\n'.format(selection_text, time_str))
-            elif len(selection_text) == 13 and selection_text.isdigit(): # 1672793160937
-                time_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(selection_text)/1000))
-                self.panel_log('{}       {}\n'.format(selection_text, time_str))
-            else:
-                if is_entire:
-                    self.panel_log('not support\n')
+            try:
+                # 仅支持处理 2023-01-04 08:46:00  2023-01-04 1672793160937  1672793160
+                if len(selection_text) == 10 and '-' in selection_text:  # 2023-01-04
+                    time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d'))) * 100
+                    self.panel_log('{}          {}\n'.format(selection_text, time_int))
+                elif len(selection_text) == 19 and '-' in selection_text and ':' in selection_text: # 2023-01-04 08:46:00
+                    time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d %H:%M:%S'))) * 100
+                    self.panel_log('{} {}\n'.format(selection_text, time_int))
+                elif len(selection_text) == 10 and selection_text.isdigit(): # 1672793160
+                    time_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(selection_text)))
+                    self.panel_log('{}          {}\n'.format(selection_text, time_str))
+                elif len(selection_text) == 13 and selection_text.isdigit(): # 1672793160937
+                    time_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(selection_text)/1000))
+                    self.panel_log('{}       {}\n'.format(selection_text, time_str))
                 else:
-                    self.panel_log('not support: {}\n'.format(selection_text))
-        except Exception as e:
-            self.panel_log(e)
+                    if is_entire:
+                        self.panel_log('not support\n')
+                    else:
+                        self.panel_log('not support: {}\n'.format(selection_text))
+            except Exception as e:
+                self.panel_log(e)
 
 # 获取选中的区域，((0, 100), false)，没有选中取全部文件
 def get_selection_from_region(region: sublime.Region, regions_length: int, view: sublime.View):
