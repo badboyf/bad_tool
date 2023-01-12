@@ -86,7 +86,14 @@ class runsingleCommand(FzkBaseCommand, sublime_plugin.TextCommand):
                 continue
             # 获取文本
             selection_text = self.view.substr(region)
-            self.panel_log('{} = {}\n'.format(selection_text, eval(selection_text)))
+            try:
+                self.panel_log('{} = {}\n'.format(selection_text, self.evl(selection_text)))
+            except Exception as e:
+                self.panel_log('{}\n'.format(e))
+    # 保证eval计算无其他参数干扰
+    def evl(self, text):
+        return eval(text)
+            
 
 # 清空panel
 class clear_panelCommand(FzkBaseCommand, sublime_plugin.TextCommand):
@@ -115,10 +122,10 @@ class timeformatCommand(FzkBaseCommand, sublime_plugin.TextCommand):
             try:
                 # 仅支持处理 2023-01-04 08:46:00  2023-01-04 1672793160937  1672793160
                 if len(selection_text) == 10 and '-' in selection_text:  # 2023-01-04
-                    time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d'))) * 100
+                    time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d'))) * 1000
                     self.panel_log('{}          {}\n'.format(selection_text, time_int))
                 elif len(selection_text) == 19 and '-' in selection_text and ':' in selection_text: # 2023-01-04 08:46:00
-                    time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d %H:%M:%S'))) * 100
+                    time_int = int(time.mktime(time.strptime(selection_text,'%Y-%m-%d %H:%M:%S'))) * 1000
                     self.panel_log('{} {}\n'.format(selection_text, time_int))
                 elif len(selection_text) == 10 and selection_text.isdigit(): # 1672793160
                     time_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(selection_text)))
