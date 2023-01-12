@@ -71,6 +71,23 @@ class runjsCommand(FzkBaseCommand, sublime_plugin.TextCommand):
             pt = self.view.window().find_output_panel("exec")
             pt.insert(self._edit, 0, '[write to tmplate file {}]\n'.format(filename))
 
+# eval执行，主要用于计算,eg:1+1
+class runsingleCommand(FzkBaseCommand, sublime_plugin.TextCommand):
+    def run(self, edit):
+        self.init_base(edit)
+        self.doRun(edit)
+
+    def doRun(self, edit):
+        regions = self.view.sel()
+        for region in regions:
+            # 获取选中区域
+            region, _ = get_selection_from_region(region=region, regions_length=len(region), view=self.view)
+            if region is None:
+                continue
+            # 获取文本
+            selection_text = self.view.substr(region)
+            self.panel_log('{} = {}\n'.format(selection_text, eval(selection_text)))
+
 # 清空panel
 class clear_panelCommand(FzkBaseCommand, sublime_plugin.TextCommand):
     def run(self, edit):

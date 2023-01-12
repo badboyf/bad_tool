@@ -1,7 +1,11 @@
 [
     {
-        "keys": ["super+e"], 
+        "keys": ["ctrl+super+e"], 
         "command": "runjs"
+    },
+    {
+        "keys": ["super+e"], 
+        "command": "runsingle"
     },
 	{
         "keys": ["ctrl+e"], 

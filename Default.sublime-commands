@@ -4,6 +4,10 @@
         "command": "runjs"
     },
     {
+        "caption": "Bad Tool - Run Single Command",
+        "command": "runsingle"
+    },
+    {
         "caption": "Bad Tool - Time Format",
         "command": "timeformat"
     },

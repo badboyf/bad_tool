@@ -4,7 +4,7 @@
   ],
   "dependencies": [],
   "sublime_text": ">=3000",
-  "url": "",
+  "url": "https://github.com/badboyf/bad_tool",
   "version": "0.0.1",
   "description": "聚合工具"
 }
